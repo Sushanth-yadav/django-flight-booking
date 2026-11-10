@@ -1,0 +1,132 @@
+{% extends 'main.html' %}
+
+{% block abc %}
+
+<style>
+    .register-page-wrapper{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:85vh;
+        font-family:Arial, sans-serif;
+        background:#f4f7fc;
+    }
+
+    .register-page-card{
+        background:#fff;
+        padding:30px 40px;
+        border-radius:12px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        border:1px solid #ddd;
+        width:100%;
+        max-width:420px;
+        text-align:center;
+    }
+
+    .register-page-title{
+        margin-bottom:15px;
+        color:#0d3b66;
+    }
+
+    .register-page-error{
+        color:red;
+        font-weight:bold;
+        margin-bottom:10px;
+    }
+
+    .register-page-form label{
+        display:block;
+        text-align:left;
+        margin-top:10px;
+        font-weight:bold;
+        color:#1f3c5c;
+    }
+
+    .register-page-form input{
+        width:100%;
+        padding:10px;
+        margin-top:5px;
+        border:1px solid #ddd;
+        border-radius:6px;
+        font-size:14px;
+        outline:none;
+    }
+
+    .register-page-form input:focus{
+        border-color:#1976d2;
+    }
+
+    .register-page-btn{
+        width:100%;
+        margin-top:15px;
+        padding:10px;
+        background:#1976d2;
+        color:white;
+        border:none;
+        border-radius:6px;
+        font-size:15px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .register-page-btn:hover{
+        background:#125aa0;
+    }
+
+    .register-page-link{
+        margin-top:15px;
+        font-size:14px;
+    }
+
+    .register-page-link a{
+        color:#1976d2;
+        text-decoration:none;
+        font-weight:bold;
+    }
+
+    .register-page-link a:hover{
+        text-decoration:underline;
+    }
+</style>
+
+<div class="register-page-wrapper">
+
+    <div class="register-page-card">
+
+        <h2 class="register-page-title">Register Page</h2>
+
+        {% if error %}
+            <div class="register-page-error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" class="register-page-form">
+            {% csrf_token %}
+
+            <label>First Name:</label>
+            <input type="text" name="fname">
+
+            <label>Last Name:</label>
+            <input type="text" name="lname">
+
+            <label>Email:</label>
+            <input type="email" name="email">
+
+            <label>Username:</label>
+            <input type="text" name="uname">
+
+            <label>Password:</label>
+            <input type="password" name="pasw">
+
+            <button type="submit" class="register-page-btn">Submit</button>
+        </form>
+
+        <div class="register-page-link">
+            Already have an account?
+            <a href="{% url 'login_' %}">Login</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends 'main.html' %}
+
+{% block abc %}
+
+<style>
+    body{
+        background:#f4f7fc;
+        font-family: Arial, sans-serif;
+    }
+
+    .booking-container{
+        width:60%;
+        margin:30px auto;
+        background:white;
+        padding:40px;
+        border-radius:10px;
+        box-shadow:0px 3px 15px rgba(0,0,0,0.1);
+    }
+
+    .main-title{
+        text-align:center;
+        color:#0d3b66;
+        margin-bottom:30px;
+    }
+
+    .section-title{
+        color:#1976d2;
+        border-bottom:2px solid #1976d2;
+        padding-bottom:10px;
+        margin:30px 0 20px;
+    }
+
+    .form-group{
+        margin-bottom:20px;
+    }
+
+    .form-group label{
+        display:block;
+        font-weight:600;
+        margin-bottom:8px;
+        color:#1f3c5c;
+    }
+
+    .form-group input,
+    .form-group select{
+        width:100%;
+        padding:12px;
+        border:1px solid #ddd;
+        border-radius:6px;
+        font-size:15px;
+        box-sizing:border-box;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus{
+        outline:none;
+        border-color:#1976d2;
+    }
+
+    .submit-btn{
+        width:100%;
+        background:#28a745;
+        color:white;
+        border:none;
+        padding:14px;
+        font-size:18px;
+        border-radius:6px;
+        cursor:pointer;
+        margin-top:20px;
+    }
+
+    .submit-btn:hover{
+        background:#218838;
+    }
+</style>
+
+<div class="booking-container">
+
+    <h1 class="main-title">✈ Plane Ticket Booking Form</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <h2 class="section-title">Flight Details</h2>
+
+        <div class="form-group">
+            <label>Flight Company</label>
+            <input type="text" name="fcomp" value="{{i.comp}}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Flight Name</label>
+            <input type="text" name="fname" value="{{i.flightn}}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Flight Number</label>
+            <input type="text" name="fnum" value="{{i.flightno}}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>From</label>
+            <input type="text" name="from" value="{{i.fromm}}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>To</label>
+            <input type="text" name="to" value="{{i.to}}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Departure Time</label>
+            <input type="text" name="dtime" value="{{i.departure}}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Flight Date</label>
+            <input type="text" name="fdate" value="{{i.date}}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Ticket Price</label>
+            <input type="text" name="tprice" value="{{i.price}}" readonly>
+        </div>
+
+        <h2 class="section-title">Passenger Details</h2>
+
+        <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" name="yname" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="number" name="pnum" required>
+        </div>
+
+        <div class="form-group">
+            <label>Aadhar Number</label>
+            <input type="text" name="aadhar" required>
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" name="age" required>
+        </div>
+
+        <div class="form-group">
+            <label>Seat Class</label>
+            <select name="sclass" required>
+                <option value="">Select seat class</option>
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+                <option value="First Class">First Class</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Seat Number</label>
+            <input type="text" name="snum" required>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Book Ticket
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

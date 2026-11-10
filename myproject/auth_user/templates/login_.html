@@ -1,0 +1,103 @@
+{% extends 'main.html' %}
+
+{% block abc %}
+
+<style>
+    .login-page-wrapper{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:80vh;
+        font-family:Arial, sans-serif;
+        background:#f4f7fc;
+    }
+
+    .login-page-card{
+        background:#fff;
+        padding:30px 40px;
+        border-radius:12px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        border:1px solid #ddd;
+        width:100%;
+        max-width:400px;
+        text-align:center;
+    }
+
+    .login-page-title{
+        margin-bottom:15px;
+        color:#0d3b66;
+    }
+
+    .login-page-error{
+        color:red;
+        margin-bottom:10px;
+        font-weight:bold;
+    }
+
+    .login-page-form label{
+        display:block;
+        text-align:left;
+        margin-top:10px;
+        font-weight:bold;
+        color:#1f3c5c;
+    }
+
+    .login-page-form input{
+        width:100%;
+        padding:10px;
+        margin-top:5px;
+        border:1px solid #ddd;
+        border-radius:6px;
+        font-size:14px;
+        outline:none;
+    }
+
+    .login-page-form input:focus{
+        border-color:#1976d2;
+    }
+
+    .login-page-btn{
+        width:100%;
+        margin-top:20px;
+        padding:10px;
+        background:#1976d2;
+        color:white;
+        border:none;
+        border-radius:6px;
+        font-size:15px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .login-page-btn:hover{
+        background:#125aa0;
+    }
+</style>
+
+<div class="login-page-wrapper">
+
+    <div class="login-page-card">
+
+        <h2 class="login-page-title">Login Page</h2>
+
+        {% if error %}
+            <div class="login-page-error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" class="login-page-form">
+            {% csrf_token %}
+
+            <label>Username:</label>
+            <input type="text" name="uname">
+
+            <label>Password:</label>
+            <input type="password" name="pasw">
+
+            <button type="submit" class="login-page-btn">Submit</button>
+        </form>
+        <a href="{% url 'register'%}">Didnot registered ?</a>
+    </div>
+
+</div>
+
+{% endblock %}

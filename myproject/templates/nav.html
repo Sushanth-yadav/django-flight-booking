@@ -1,0 +1,19 @@
+<nav>
+    <div class="logo">
+    <h4>QUICKSKY FLIGHTS</h4>
+    </div>
+    <div class="links">
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'home'%}">home</a>
+        <a href="{% url 'booking'%}">booking</a>
+        <a href="{% url 'history'%}">history</a>
+        <a href="{% url 'profile'%}">profile</a>
+        <a href="{% url 'logout_'%}">logout</a>
+        <a href="{% url 'support'%}">support</a>
+        <a href="{% url 'about'%}">about</a>
+    {%  else %}
+            <a href="{% url 'login_' %}">LOGIN</a>
+            <a href="{% url 'register' %}">REGISTER</a>
+    {% endif %}
+    <div>
+</nav>

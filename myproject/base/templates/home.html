@@ -1,0 +1,93 @@
+{% extends 'main.html' %}
+
+{% block abc %}
+
+<style>
+    .flight-container{
+        width: 70%;
+        margin: 30px auto;
+    }
+
+    .flight-card{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 25px;
+        
+    }
+
+    .flight-left h3{
+        color: #1976d2;
+        margin-bottom: 10px;
+    }
+
+    .flight-left p{
+        margin: 6px 0;
+        font-size: 16px;
+    }
+
+    .flight-right{
+        text-align: right;
+    }
+
+    .flight-right p{
+        margin: 8px 0;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .book-btn{
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 25px;
+        background: #35c759;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .book-btn:hover{
+        background: #28a745;
+    }
+
+    body{
+        background: #f4f6f9;
+    }
+</style>
+
+<div class="flight-container">
+    {% for i in data %}
+    <div class="flight-card">
+
+        <div class="flight-left">
+            <h3>{{ i.comp }}</h3>
+
+            <p>{{ i.flightn }} | Flight No: {{ i.flightno }}</p>
+
+            <p><strong>From:</strong> {{ i.fromm }}</p>
+
+            <p><strong>To:</strong> {{ i.to }}</p>
+        </div>
+
+        <div class="flight-right">
+            <p><strong>Departure:</strong> {{ i.departure }}</p>
+
+            <p><strong>Date:</strong> {{ i.date }}</p>
+
+            <p><strong>Price:</strong> ₹{{ i.price }}</p>
+
+            <a href="{% url 'book' i.id %}" class="book-btn">
+                Book Now
+            </a>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

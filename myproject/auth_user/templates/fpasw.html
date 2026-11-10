@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block abc %}
+    <h2>change Password page</h2>
+    <center>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% if error %}
+                <h2 style="color: red;">Invalid username</h2>
+            {% endif %}
+
+            {% if new %}
+                <label for="">New Password:</label>
+                <input type="password" name="pasw" id=""> <br><br>
+            {% else %}
+                <label for="">Enter Username:</label>
+                <input type="text" name="uname" id=""> <br><br>
+            {% endif %}
+
+            <button type="submit">Submit</button>
+        </form>
+        
+    </center>
+   
+{% endblock %}
